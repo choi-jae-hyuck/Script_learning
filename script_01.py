@@ -46,9 +46,22 @@ def cal():
     day=day%365
     print(year,"Year ",day,"Days")
 
-def hit()://수정해야함
+def hit():
     goal=eval(input("Goal Money ? : "))
     per=eval(input("Percent ? : "))
     year=eval(input("Year ? : "))
-    month=goal/(1+year*0.01)**year
+    month=goal/(1+(per*0.01)/12)**(year*12)
     print(month)
+
+def bmi():
+    weight=eval(input("Weight ? : "))
+    height=eval(input("Height ? : "))
+    foweight=weight*0.45359237
+    inheight=height*0.0254
+    print("BMI : ",round(foweight/inheight**2,4))
+
+def temp():
+    temper=eval(input("Input -58F ~ 41F temperature : "))
+    mph=eval(input("Input mph : "))
+    chill = 35.74+(0.6215*temper)-(35.75*(mph**0.16))+(0.4275*temper*(mph**0.16))
+    print("Wind chill : ",round(chill,5))
