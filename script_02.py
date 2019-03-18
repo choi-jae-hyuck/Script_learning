@@ -57,7 +57,7 @@ def satle():?
     x2=math.radians(x2)
     y1=math.radians(y1)
     y2=math.radians(y2)
-    r=6370.01
+    r=6371.01
     d=r*math.acos(math.sin(x1)*math.sin(x2)+math.cos(x1)*math.cos(x2)*math.cos(y1-y2))
     print(d)
 
@@ -67,7 +67,7 @@ def asc():
 
 import time
 def timer():
-    word=int(time.time()%26+65)
+    word=int(time.time()%26)+ord('A')
     print(chr(word))
 
 def money():
@@ -104,3 +104,34 @@ def iner():
         dic[i]=dic[i]+1
     for i in dic.keys():
         print(i," =",dic[i],"piece")
+
+def average():
+    lis=input("INPUT SCORE : ")
+    lis=lis.split()
+    lis=[eval(i) for i in lis]
+    up,down=[],[]
+    Sum=0
+    account=0
+    for i in lis:
+        Sum+=i
+        account+=1
+    average=Sum/account
+    for i in lis:
+        if i<average : down.append(i)
+        elif i>average : up.append(i)
+    print("Average : ",average)
+    print("Average UP : ",up)
+    print("Average Down : ",down)
+
+def origin():
+    lis=input("INPUT SCORE : ")
+    lis=lis.split()
+    lis=[eval(i) for i in lis]
+    original=[]
+    for i in lis:
+        original.append(i)
+    for i in original:
+        if original.count(i) >1:
+            original.remove(i)
+    print("Original NUM: "original)
+            
