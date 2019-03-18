@@ -50,7 +50,7 @@ def quads():
     print("Area is ",area)
 
 import math
-def satle():
+def satle():?
     x1,y1=eval(input("input first(x,y) : "))
     x2,y2=eval(input("input second(x,y) : "))
     x1=math.radians(x1)
@@ -60,3 +60,47 @@ def satle():
     r=6370.01
     d=r*math.acos(math.sin(x1)*math.sin(x2)+math.cos(x1)*math.cos(x2)*math.cos(y1-y2))
     print(d)
+
+def asc():
+    word=eval(input("ASCII CODE: "))
+    print("Word is ",chr(word))
+
+import time
+def timer():
+    word=int(time.time()%26+65)
+    print(chr(word))
+
+def money():
+    name=input("Name : ")
+    time=eval(input("Hour per Week : "))
+    pay=eval(input("Pay per Hour : "))
+    tax=eval(input("Tax : "))
+    region=eval(input("Region Tax : "))
+    allpay=pay*time
+    
+    print("\nName = ",name)
+    print("Pay = ",pay)
+    print("All Pay = ",allpay)
+    print("Deduction")
+    print("  Tax (",tax*100,"%) : ",allpay*tax)
+    print("  Region Tax (",region*100,"%) : ",int(allpay*region))
+    print("  All Tax : ",int(allpay*(tax+region)))
+    print("  salary : ",int(allpay-allpay*(tax+region)))
+    
+def reversing():
+    lis=input("LIST : ")
+    lis=lis.split()
+    lis.reverse()
+    print(lis)
+
+def iner():
+    lis=input("LIST : ")
+    lis=lis.split()
+    lis.sort()
+    dic={}
+    for i in lis:
+        dic[i]=0
+    for i in lis:
+        dic[i]=dic[i]+1
+    for i in dic.keys():
+        print(i," =",dic[i],"piece")
