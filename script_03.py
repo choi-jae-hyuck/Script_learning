@@ -1,3 +1,16 @@
+import random
+def monte():
+    num=0
+    for i in range(0,1000000):
+        t=random.randrange(1,100+1)
+        if t<76:
+            num+=1
+    print("Dart Percent : ",num/1000000,"%")
+
+def reverse(number):
+    num=str(number)
+    print(num[::-1])
+
 def gcd(m,n):
     if m%n is 0:
         print("gcd(",m ,",", n,") =", n)
