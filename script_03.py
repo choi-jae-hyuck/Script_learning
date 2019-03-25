@@ -1,4 +1,5 @@
 import random
+<<<<<<< HEAD
 def card():
     num=random.randint(0,12)
     pattern=random.randint(0,3)
@@ -28,6 +29,19 @@ def m1(i):
     for i in range(1,i+1):
         l+=i/(i+1)
         print("{0}      {1:.4f}".format(i,l))
+=======
+def monte():
+    num=0
+    for i in range(0,1000000):
+        t=random.randrange(1,100+1)
+        if t<76:
+            num+=1
+    print("Dart Percent : ",num/1000000,"%")
+
+def reverse(number):
+    num=str(number)
+    print(num[::-1])
+>>>>>>> fcbcada2ce91bb816523c55c8afaf2cd4dd6ae0d
 
 def gcd(m,n):
     if m%n is 0:
