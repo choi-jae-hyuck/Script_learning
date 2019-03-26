@@ -1,11 +1,36 @@
+def equation():
+    lst=eval(input("Input A b c :"))
+    a=lst[0]
+    b=lst[1]
+    c=lst[2]
+    judge=(b**2)-(4*a*c)
+    r1= (-b+((b**2)-4*a*c)**0.5) / (2*a)
+    r2= (-b-((b**2)-4*a*c)**0.5) / (2*a)
+
+    if judge < 0:
+        print("No real root")
+    elif judge > 0:
+        print("Real root is {0:.6f} , {1:.5f}".format(r1,r2))
+    else:
+        print("Real root is {0:.6f}".format(r1))
+
 import random
-<<<<<<< HEAD
 def card():
     num=random.randint(0,12)
     pattern=random.randint(0,3)
     a=["A",2,3,4,5,6,7,8,9,10,"J","Q","K"]
     b=["Clover","Diamond","Heart","Spad"]
     print("Card is {0} {1}".format(b[pattern],a[num]))
+
+def triangle():
+    lst=eval(input("Input (x,y) : "))
+    x=lst[0]
+    y=lst[1]
+
+    if y>100-(0.5*x):
+        print("Point is out of triangle")
+    else:
+        print("Point in triangle")
 
 
 def comission():
@@ -22,6 +47,43 @@ def comission():
         sales +=1
     print("Sales= ",sales)
 
+def monte():
+    num=0
+    for i in range(0,1000000):
+        t=random.randrange(1,100+1)
+        if t>62.5:
+            num+=1
+    print("Dart Percent : ",num/1000000,"%")
+
+def reverse(number):
+    num=str(number)
+    num=int(num[::-1])
+    return num
+
+def ispal(number):
+    num1=number
+    num2=reverse(number)
+    if num1 == num2:
+        return True
+    else:
+        return False
+
+def display():
+    lst=eval(input("Input 3 Number :"))
+    lst=[i for i in lst]
+    lst.sort()
+    print("Sorting : {0}, {1}, {2}".format(lst[0],lst[1],lst[2]))
+
+def printChar(ch1,ch2,number):
+    num1=ord(ch1)
+    num2=ord(ch2)
+    prt=str()
+    for i in range(0,number):
+        prt+=chr(num1)
+        if num1<num2:
+            num1+=1
+    print(prt)
+    
 
 def m1(i):
     print("i      m(i)")
@@ -29,19 +91,6 @@ def m1(i):
     for i in range(1,i+1):
         l+=i/(i+1)
         print("{0}      {1:.4f}".format(i,l))
-=======
-def monte():
-    num=0
-    for i in range(0,1000000):
-        t=random.randrange(1,100+1)
-        if t<76:
-            num+=1
-    print("Dart Percent : ",num/1000000,"%")
-
-def reverse(number):
-    num=str(number)
-    print(num[::-1])
->>>>>>> fcbcada2ce91bb816523c55c8afaf2cd4dd6ae0d
 
 def gcd(m,n):
     if m%n is 0:
@@ -60,13 +109,15 @@ def hanoi(ndisks,startPeg=1, endPeg=3):
     global count
     if ndisks:
         hanoi(ndisks-1,startPeg,6-startPeg-endPeg)
-        print(startPeg,"번 기둥의", ndisks, "번 원반을", endPeg,"번 기둥에 옮김니다.")
         count+=1
         hanoi(ndisks-1,6-startPeg-endPeg, endPeg)
-    print("All movement ="count)
+print("All Hanoi movement =",count)
 
-def tobinary():
+def binary():
     value = eval(input("INPUT NUM :"))
+    print(tobinary(value))
+
+def tobinary(value):
     if value is 0:
         return ""
     return tobinary(value//2)+str(value%2)

@@ -59,7 +59,7 @@ def quads():
     print("Area is ",area,"Km")
 
 import math
-def satle():?
+def satle():
     x1,y1=eval(input("input first(x,y) : "))
     x2,y2=eval(input("input second(x,y) : "))
     x1=math.radians(x1)
@@ -68,7 +68,7 @@ def satle():?
     y2=math.radians(y2)
     r=6371.01
     d=r*math.acos(math.sin(x1)*math.sin(x2)+math.cos(x1)*math.cos(x2)*math.cos(y1-y2))
-    print(d)
+    print(d,"KM")
 
 def asc():
     word=eval(input("ASCII CODE: "))
@@ -105,6 +105,7 @@ def reversing():
 def iner():
     lis=input("LIST : ")
     lis=lis.split()
+    lis=[int(i) for i in lis]
     lis.sort()
     dic={}
     for i in lis:
@@ -139,18 +140,14 @@ def origin():
     original = list(set(lis))
     print(original)
 
-def lst(lis):
-    count = 0
-    for i in lis:
-        count+=1
-    print("List count : ",count,", List first index : ",lis[0],", List Last index : ",lis[count-1])
-    print("List[2] : ",lis[2],", List[-2] : ",lis[-2])
-
 def small(lst):
     lst.sort()
     print("Minimum : ",lst[0])
 
-def sorting(lst):
+def sorting():
+    lst=input("INPUT List : ")
+    lst=lst.split()
+    lst=[eval(i) for i in lst]
     a=lst[0]
     sort=True
     for i in lst:
@@ -171,7 +168,7 @@ def bean():
     bean=["" for i in range(0,beans)]
     for i in range(0,beans):
         move=0
-        for j in range(0,num):
+        for j in range(0,num-1):
             LR=random.randrange(1,2+1)
             if LR is 1:
                 bean[i]+=str("L")
@@ -200,8 +197,11 @@ def sumcolum(m,colum):
         lis[i]=input()
         lis[i]=lis[i].split()
         lis[i]=list(map(float,lis[i]))
-    for i in range(0,m):
-        print(i,"'s Sum : ",sum(lis[i]))
+    for i in range(0,colum):
+        num=0
+        for j in range(0,m):
+            num+=lis[j][i]
+        print(i,"'s Sum : ",num)
 
 def findmore():
     lis=input("Input index : ")
@@ -246,7 +246,6 @@ def RD():
             rd.append([lis[i],lis[i+1]])
             num+=1
     length=0
-    print(num)
     for i in range(0,num):
         if length>rd[i][0]**2+rd[i][1]**2:
             pass
