@@ -45,14 +45,15 @@ class Stock:
         print("가격 변동률 ={0:.2f}%".format(s.getChangePercent()))
     test()
 
-
-def put():
-    s= input("숫자를 공란으로 분리해서 입력")
-    l=s.split()
-    l=[eval(i) for i in l]
-    result=[]
-    for i in l:
-        if i not in result:
-            result.append(i)
-    print(result)
-put()
+class Fan:
+    SLOW=1
+    MID=2
+    FAST=3
+    def __init__(self,speed=SLOW,radius=5,color="Blue",ON=False):
+        self.__speed=speed
+        self.__ON =ON
+        self.__radius =radius
+        self.__color=color
+    def Print(self):
+        print("SPEED : {0} , Radius : {1} , Color : {2} , ON : {3}".format(self.__speed,self.__radius,
+                                                                           self.__color,self.__ON))

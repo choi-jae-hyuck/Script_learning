@@ -27,7 +27,7 @@ def triangle():
     x=lst[0]
     y=lst[1]
 
-    if y>100-(0.5*x):
+    if y>100-(0.5*x) and x>0 and y>0:
         print("Point is out of triangle")
     else:
         print("Point in triangle")
@@ -48,12 +48,22 @@ def comission():
     print("Sales= ",sales)
 
 def monte():
-    num=0
-    for i in range(0,1000000):
-        t=random.randrange(1,100+1)
-        if t>62.5:
-            num+=1
-    print("Dart Percent : ",num/1000000,"%")
+    number=[0]*4
+    for i in range(1000000):
+        x=random.random() * 2 - 1
+        y=random.random() * 2 - 1
+        if x<0 :
+            number[0] += 1
+        elif y< 0:
+            number[3] += 1
+        elif x>=0 and x<=1 and y>=0 and y<=1:
+            y1= -x+1
+            if y1 >=y:
+                number[2] +=1
+            else:
+                number[1] +=1
+    print(number)
+    print((number[0]+number[2])/1000000)
 
 def reverse(number):
     num=str(number)
