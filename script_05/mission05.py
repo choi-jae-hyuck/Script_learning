@@ -1,5 +1,6 @@
 from tkinter import *
 
+
 class Ball:
     def __init__(self):
         self.x = 10
@@ -9,7 +10,9 @@ class Ball:
 
 class BallAni:
     def stop(self):
-        pass
+        for i in self.ballList:
+            i.dix = 0
+            i.diy = 0
     def resume(self):
         pass
     def add(self):
@@ -17,26 +20,30 @@ class BallAni:
     def remove(self):
         self.ballList.pop()
     def faster(self):
-        pass
+        for i in self.ballList:
+            i.dix *= 2
+            i.diy *= 2
     def slower(self):
-        pass
+        for i in self.ballList:
+            i.dix *= 0.5
+            i.diy *= 0.5
     def animate(self):
         while True:
             self.canvas.after(100)
             self.canvas.update()
             self.canvas.delete("Ball")
             for i in self.ballList:
-                if Ball.x>=self.width:
-                    Ball.dix=-2
-                elif Ball.x<0:
-                    Ball.dix=2
-                if Ball.y>=self.height:
-                    Ball.diy=-2
-                elif Ball.y<0:
-                    Ball.diy=2
-                Ball.x+=Ball.dix
-                Ball.y+=Ball.diy
-                self.canvas.create_oval(Ball.x-3,Ball.y-3,Ball.x+3,Ball.y+3,fill="red",tags="Ball")
+                if i.x>=self.width:
+                    i.dix *=-1
+                elif i.x<0:
+                    i.dix *=-1
+                if i.y>=self.height:
+                    i.diy *=-1
+                elif i.y<0:
+                    i.diy *=-1
+                i.x+=i.dix
+                i.y+=i.diy
+                self.canvas.create_oval(i.x-3,i.y-3,i.x+3,i.y+3,fill="red",tags="Ball")
 
     def __init__(self):
         self.window = Tk()

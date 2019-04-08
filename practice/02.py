@@ -1,12 +1,13 @@
-from tkinter import *
-window =Tk()
+import sys
 
-radio1=IntVar()
-radio2=IntVar()
+def remove_string():
+    file_name=input("File name : ")
+    remove_name=input("Remove string : ")
+    f=open(file_name)
+    S=f.read()
+    newS=S.replace(remove_name,"")
+    f.close()
+    f=open(file_name,'w')
+    f.write(newS)
+    f.close()
 
-r1=Radiobutton(window,text="1",value=3,variable=radio1)
-r2=Radiobutton(window,text="2",value=3,variable=radio1)
-r1.pack()
-r2.pack()
-
-window.mainloop()

@@ -57,3 +57,15 @@ class Fan:
     def Print(self):
         print("SPEED : {0} , Radius : {1} , Color : {2} , ON : {3}".format(self.__speed,self.__radius,
                                                                            self.__color,self.__ON))
+
+
+def remove_string():
+    file_name=input("File name : ")
+    remove_name=input("Remove string : ")
+    f=open(file_name)
+    S=f.read()
+    newS=S.replace(remove_name,"")
+    f.close()
+    f=open(file_name,'w')
+    f.write(newS)
+    f.close()
