@@ -1,33 +1,38 @@
-class Person:
-    def __init__(self,name,number):
-        self.name=name
-        self.number=number
+from tkinter import *
+from tkinter.filedialog import askopenfilename
 
-    def PrintInfo(self):
-        print(self.name, self.number)
-    def PrintPersonData(self):
-        print("Person : {0},{1}".format(self.name,self.number))
+def fileopen():
+    file_name = e.get()
+    f = open(file_name)
+    S = f.read()
+    # 알파벳 빈도수
+    histogram = [0] * 26
+    new = S.lower()
+    for c in new:
+        if c.isalpha():
+            histogram[ord(c) - ord('a')] += 1
+    maxCount=max(histogram)
+    barW=(600-20)/26
+    for i in range(26):
+        canvas.create_rectangle(10+i*barW,290-(300*histogram[i]/maxCount)*0.9, 10+(i+1)*barW,300-10)
+        canvas.create_text(10 + i * barW + 10, 300 - 5, text=chr(i + ord('a')))
+        canvas.create_text(10 + i * barW + 10, 290 - (300 * histogram[i] / maxCount) * 0.9 - 10, text=histogram[i])
+    f.close()
 
-class Student(Person):
-    def __init__(self,name,number,subject,studentid):
-        Person.__init__(self,name,number)
-        self.subject=subject
-        self.studentid=studentid
 
-    def PrintID(self):
-        print(self.name, self.number)
-        print(self.subject, self.studentid)
-
-
-class Super:
-    x=10
-    def PrintX(self):
-        print(self.x)
-class Sub(Super):
-    y=20
-    def PrintY(self):
-        self.b=1000
-        print(self.y)
+window=Tk()
+window.title("Alpha")
+frame1=Frame(window)
+frame1.pack()
+canvas = Canvas(frame1, bg="white", width=600, height=300)
+canvas.pack()
+frame2=Frame(window)
+frame2.pack()
+Label(frame2,text="Input URL").pack(side=LEFT)
+e = Entry(frame2,text="")
+e.pack(side=LEFT)
+Button(frame2,text="Result",command=fileopen).pack(side=LEFT)
+window.mainloop()
 
 
 

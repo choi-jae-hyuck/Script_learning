@@ -59,6 +59,10 @@ class Fan:
                                                                            self.__color,self.__ON))
 
 
+class Triangle:
+    pass
+
+
 def remove_string():
     file_name=input("File name : ")
     remove_name=input("Remove string : ")
@@ -69,3 +73,93 @@ def remove_string():
     f=open(file_name,'w')
     f.write(newS)
     f.close()
+
+def read_string():
+    file_name=input("File name : ")
+    f=open(file_name)
+    S=f.read()
+    character = len(S)
+    word= len(S.split())
+    line = len(S.split("\n"))
+    print("Char : ",character)
+    print("Word : ", word)
+    print("Line : ", line)
+    f.close()
+
+#--------------------------------------------------
+
+from tkinter import *
+from tkinter.filedialog import askopenfilename
+
+file_name=""
+def fileopen():
+    global file_name
+    file_name = askopenfilename()
+    #e.configure(text=file_name)
+
+def showResult():
+    f = open(file_name)
+    S = f.read()
+    # 알파벳 빈도수
+    histogram = [0] * 26
+    new = S.lower()
+    for c in new:
+        if c.isalpha():
+            histogram[ord(c) - ord('a')] += 1
+    for i in range(26):
+        text.insert(END, chr(i + ord('a')) + " = " + str(histogram[i]) + "\n")
+    f.close()
+
+window=Tk()
+window.title("Alpha")
+frame1=Frame(window)
+frame1.pack()
+scrollbar = Scrollbar(frame1)
+scrollbar.pack(side=RIGHT,fill=Y)
+text=Text(frame1,width=50,height=15,wrap=WORD,yscrollcommand=scrollbar.set)
+text.pack()
+frame2=Frame(window)
+frame2.pack()
+Label(frame2,text="File name").pack(side=LEFT)
+e = Entry(frame2,text="")
+e.pack(side=LEFT)
+Button(frame2,text="Open",command=fileopen).pack(side=LEFT)
+Button(frame2,text="Result",command=showResult).pack(side=LEFT)
+window.mainloop()
+
+#--------------------------------------------------------
+from tkinter import *
+from tkinter.filedialog import askopenfilename
+
+def fileopen():
+    file_name = e.get()
+    f = open(file_name)
+    S = f.read()
+    # 알파벳 빈도수
+    histogram = [0] * 26
+    new = S.lower()
+    for c in new:
+        if c.isalpha():
+            histogram[ord(c) - ord('a')] += 1
+    maxCount=max(histogram)
+    barW=(600-20)/26
+    for i in range(26):
+        canvas.create_rectangle(10+i*barW,290-(300*histogram[i]/maxCount)*0.9, 10+(i+1)*barW,300-10)
+        canvas.create_text(10 + i * barW + 10, 300 - 5, text=chr(i + ord('a')))
+        canvas.create_text(10 + i * barW + 10, 290 - (300 * histogram[i] / maxCount) * 0.9 - 10, text=histogram[i])
+    f.close()
+
+
+window=Tk()
+window.title("Alpha")
+frame1=Frame(window)
+frame1.pack()
+canvas = Canvas(frame1, bg="white", width=600, height=300)
+canvas.pack()
+frame2=Frame(window)
+frame2.pack()
+Label(frame2,text="Input URL").pack(side=LEFT)
+e = Entry(frame2,text="")
+e.pack(side=LEFT)
+Button(frame2,text="Result",command=fileopen).pack(side=LEFT)
+window.mainloop()
