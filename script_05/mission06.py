@@ -14,31 +14,29 @@ class Linear:
         self.canvas.pack()
         frame=Frame(window)
         frame.pack()
+        Label(frame,text="Input Key").pack(side=LEFT)
+        self.e=Entry(frame,text='',justify=RIGHT,width=3)
+        self.e.pack(side=LEFT)
         Button(frame,text="Next",command=self.step).pack(side=LEFT)
         Button(frame, text="Reset", command=self.reset).pack(side=LEFT)
 
         window.mainloop()
 
     def step(self):
-        minIndex=self.i
-        for i in range(self.i+1,20):
-            if self.numbers[minIndex] > self.numbers[i]:
-                minIndex=i
-        self.numbers[minIndex],self.numbers[i] = self.numbers[i] , self.numbers[minIndex]
-        self.draw()
+        n=eval(self.e.get())
         barW = (self.width - 20) / 20
         self.canvas.delete("red")
         self.canvas.create_rectangle(10 + self.i * barW, (1 - self.numbers[self.i] / 21) * (self.height - 10),
                                      10 + (self.i + 1) * barW, self.height,fill='red', tag='red')
+        if n == self.numbers[self.i]:
+            tkinter.messagebox.showinfo("showinfo","Find it")
         self.i+=1
+
 
     def reset(self):
         self.i=0
         self.numbers=[x for x in range(1,21)]
         random.shuffle(self.numbers)
-        self.draw()
-
-    def draw(self):
         barW=(self.width-20)/20
         self.canvas.delete("red")
         self.canvas.delete("grim")
