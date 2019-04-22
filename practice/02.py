@@ -6,14 +6,14 @@ for i in range(num):
     trying=eval(input())
     for j in range(trying):
         a.append(input())
-        a=a[j*3].split()
-    print(a)
-    a=[eval(x) for x in a]
+        a[j]=a[j].split()
+        a[j] = [eval(x) for x in a[j]]
     for j in range(trying):
         max=0
         for k in range(3):
-            if a[j*trying+k]>max:
-                max=a[j*trying+k]
+            if a[j][k]>max:
+                max=a[j][k]
         money +=max
     result.append(money)
-print(result)
+for i in range(num):
+    print(result[i])
