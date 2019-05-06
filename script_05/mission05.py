@@ -14,7 +14,9 @@ class BallAni:
             i.dix = 0
             i.diy = 0
     def resume(self):
-        pass
+        for i in self.ballList:
+            i.dix = 2
+            i.diy = 2
     def add(self):
         self.ballList.append(Ball())
     def remove(self):

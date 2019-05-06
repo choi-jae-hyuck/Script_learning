@@ -1,19 +1,19 @@
 num=eval(input())
 result=[]
 for i in range(num):
-    a = []
-    money = 0
-    trying=eval(input())
-    for j in range(trying):
-        a.append(input())
-        a[j]=a[j].split()
-        a[j] = [eval(x) for x in a[j]]
-    for j in range(trying):
-        max=0
-        for k in range(3):
-            if a[j][k]>max:
-                max=a[j][k]
-        money +=max
-    result.append(money)
+    osel=eval(input())
+    a=input()
+    b=input()
+    wb=0
+    bw=0
+    for j in range(osel):
+        if a[j] is 'W' and b[j] is 'B':
+            wb +=1
+        elif a[j] is 'B' and b[j] is 'W':
+            bw+=1
+    if wb<bw:
+        result.append(bw)
+    else:
+        result.append(wb)
 for i in range(num):
     print(result[i])

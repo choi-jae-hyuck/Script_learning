@@ -58,6 +58,27 @@ class Fan:
         print("SPEED : {0} , Radius : {1} , Color : {2} , ON : {3}".format(self.__speed,self.__radius,
                                                                            self.__color,self.__ON))
 
+import time
+class StopWatch:
+    def __init__(self):
+        self.__startTime = time.time()
+        self.__endTime = 0
+    def __get(self):
+        pass
+    def start(self):
+        self.__startTime=time.time()
+     def stop(self):
+         self.__endTime=time.time()
+     def getElapsedTime(self):
+         return print("{0:.2f} ms".format( ( self.__endTime - self.__startTime)*1000)  )
+
+n=1
+s=StopWatch()
+for i in range(100000):
+    n+=1
+s.stop()
+s.getElapsedTime()
+
 
 class Triangle:
     pass
