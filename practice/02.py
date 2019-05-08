@@ -1,19 +1,28 @@
-num=eval(input())
-result=[]
-for i in range(num):
-    a = []
-    money = 0
-    trying=eval(input())
-    for j in range(trying):
-        a.append(input())
-        a[j]=a[j].split()
-        a[j] = [eval(x) for x in a[j]]
-    for j in range(trying):
-        max=0
-        for k in range(3):
-            if a[j][k]>max:
-                max=a[j][k]
-        money +=max
-    result.append(money)
-for i in range(num):
-    print(result[i])
+def Yatzee():
+    while True:
+        number=input()
+        number=number.split()
+        number=[int(x) for x in number]
+        num=0
+        four=0
+        correct=True
+        for i in range(4):
+            if number[i]<number[i+1] and (number[i] is number[i+1] or number[i]+1 is number[i+1]):
+                if(four>=0):
+                    four+=1
+                num=1
+            elif number[i]>number[i+1]:
+                if(four<=0):
+                    four-=1
+                num=-1
+            elif number[i] is number[i+1]and (number[i] is number[i+1] or number[i]-1 is number[i+1]):
+                if(four>0):
+                    four+=1
+                else:
+                    four-=1
+                num=0
+        if four>=4 or four<=-4:
+            print("YES")
+        else:
+            print("NO")
+Yatzee()

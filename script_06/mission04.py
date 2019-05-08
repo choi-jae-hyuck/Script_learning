@@ -34,7 +34,7 @@ class TicTacToe:
 
     def check_row(self):
         for r in range(3):
-            for c in range(0):
+            for c in range(1):
                 if self.buttonList[r*3 +c+0]['text'] is self.buttonList[r*3 +c+1]['text']\
                     and self.buttonList[r*3 +c+0]['text'] is self.buttonList[r*3 +c+2]['text'] :
                     pass

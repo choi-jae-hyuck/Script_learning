@@ -1,40 +1,27 @@
-from tkinter import *
-from tkinter.filedialog import askopenfilename
+def prime():
+    result=[]
+    num=0
+    number=2
+    while True:
+        correct = True
+        if num is 100:
+            break
+        for i in range(2,number):
+            if number%i is 0:
+                correct=False
+        if correct is True:
+            a=0
+            for i in str(number):
+                a+=1
+            co = True
+            for i in range(a):
+                if str(number)[i] is not str(number)[a-1-i]:
+                    co=False
+            if co is True:
+                result.append(number)
+                num+=1
 
-def fileopen():
-    file_name = e.get()
-    f = open(file_name)
-    S = f.read()
-    # 알파벳 빈도수
-    histogram = [0] * 26
-    new = S.lower()
-    for c in new:
-        if c.isalpha():
-            histogram[ord(c) - ord('a')] += 1
-    maxCount=max(histogram)
-    barW=(600-20)/26
-    for i in range(26):
-        canvas.create_rectangle(10+i*barW,290-(300*histogram[i]/maxCount)*0.9, 10+(i+1)*barW,300-10)
-        canvas.create_text(10 + i * barW + 10, 300 - 5, text=chr(i + ord('a')))
-        canvas.create_text(10 + i * barW + 10, 290 - (300 * histogram[i] / maxCount) * 0.9 - 10, text=histogram[i])
-    f.close()
-
-
-window=Tk()
-window.title("Alpha")
-frame1=Frame(window)
-frame1.pack()
-canvas = Canvas(frame1, bg="white", width=600, height=300)
-canvas.pack()
-frame2=Frame(window)
-frame2.pack()
-Label(frame2,text="Input URL").pack(side=LEFT)
-e = Entry(frame2,text="")
-e.pack(side=LEFT)
-Button(frame2,text="Result",command=fileopen).pack(side=LEFT)
-window.mainloop()
-
-
-
-
-
+        number+=1
+    for i in range(10):
+        print("{0: >7}{1: >7}{2: >7}{3: >7}{4: >7}{5: >7}{6: >7}{7: >7}{8: >7}{9: >7}".format(result[i*10+0],result[i*10+1],result[i*10+2],result[i*10+3],result[i*10+4],result[i*10+5],result[i*10+6],result[i*10+7],result[i*10+8],result[i*10+9]))
+prime()
