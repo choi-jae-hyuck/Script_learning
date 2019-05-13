@@ -1,19 +1,21 @@
 num=eval(input())
 result=[]
 for i in range(num):
-    osel=eval(input())
-    a=input()
-    b=input()
-    wb=0
-    bw=0
-    for j in range(osel):
-        if a[j] is 'W' and b[j] is 'B':
-            wb +=1
-        elif a[j] is 'B' and b[j] is 'W':
-            bw+=1
-    if wb<bw:
-        result.append(bw)
+    element=input()
+    element=element.split()
+    a,b=int(element[0]),int(element[2])
+    answer=int(element[4])
+    if element[1] is '+':
+        ans= a + b
+    elif element[1] is '-':
+        ans= a - b
+    elif element[1] is '*':
+        ans= a * b
+    elif element[1] is '/':
+        ans=int( a / b )
+    if ans - answer is 0:
+        result.append("correct")
     else:
-        result.append(wb)
+        result.append("wrong answer")
 for i in range(num):
     print(result[i])
